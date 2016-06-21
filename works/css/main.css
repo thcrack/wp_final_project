@@ -172,3 +172,47 @@ button.close {
   padding: 10px;
   background-color: rgba(0,0,0,0.7);
 }
+
+#work-dialog {
+  margin: 100px auto;
+}
+
+#work-body {
+  height: 700px;
+}
+
+#work-body, #work-dialog,  #work-content{
+  background-color: rgba(0,0,0,0);
+}
+
+#work-pic {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 700px;
+  height: 700px;
+  border: solid;
+  border-width: 0px;
+  background-position: center; 
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#work-designer {
+  position: absolute;
+  padding: 30px;
+  display: inline-block;
+  width: 300px;
+  height: 700px;
+  background-color: #FFF;
+}
+
+#work-designer-pic {
+
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background-position: center; 
+  background-size: cover;
+  background-repeat: no-repeat;
+}
