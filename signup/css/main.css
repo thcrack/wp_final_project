@@ -163,32 +163,49 @@ button.close {
 
 #designer-picBox, #item-picBox {
   display: inline-block;
+  cursor: pointer;
   width: 300px;
   height: 300px;
   border: solid;
   border-width: 2px;
-  background-size: contain;
+  background-position: center; 
+  background-size: cover;
   background-repeat: no-repeat;
+  transition: opacity 1s;
+}
+#designer-picBox:hover, #item-picBox:hover {
+  opacity: 0.5;
 }
 
 #designer-picData, #item-picData {
   display: none;
 }
 
+#designer-view-loading {
+  margin: auto;
+  text-align: center;
+}
+
 .designer-view-block {
+  box-sizing: border-box;
   display: inline-block;
   cursor: pointer;
   width: 300px;
   height: 300px;
   border: solid;
-  border-width: 5px;
+  border-width: 0px;
   background-position: center; 
   background-size: cover;
   background-repeat: no-repeat;
   color: white;
+  transition: opacity 1s;
+}
+
+.designer-view-block:hover{
+  opacity: 0.5;
 }
 
 .designer-view-block h4 {
   padding: 10px;
-  background-color: black;
+  background-color: rgba(0,0,0,0.7);
 }

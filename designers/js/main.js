@@ -1,42 +1,37 @@
-(function($) {
- 
-    $.fn.parallax = function(options) {
- 
-        var windowHeight = $(window).height();
- 
-        // Establish default settings
-        var settings = $.extend({
-            speed        : 0.15
-        }, options);
- 
-        // Iterate over each object in collection
-        return this.each( function() {
- 
-        	// Save a reference to the element
-        	var $this = $(this);
- 
-        	// Set up Scroll Handler
-        	$(document).scroll(function(){
- 
-    		        var scrollTop = $(window).scrollTop();
-            	        var offset = $this.offset().top;
-            	        var height = $this.outerHeight();
- 
-    		// Check if above or below viewport
-			if (offset + height <= scrollTop || offset >= scrollTop + windowHeight) {
-				return;
-			}
- 
-			var yBgPosition = Math.round((offset - scrollTop) * settings.speed);
- 
-                 // Apply the Y Background Position to Set the Parallax Effect
-    			$this.css('background-position', 'center ' + yBgPosition + 'px');
-                
-        	});
-        });
-    }
-}(jQuery));
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyBqO_6r_PHnmvw-j_82wBENvy94GOGAkSI",
+    authDomain: "tattoo-decision.firebaseapp.com",
+    databaseURL: "https://tattoo-decision.firebaseio.com",
+    storageBucket: "tattoo-decision.appspot.com",
+};
 
-$('.content-pic').parallax({
-	speed :	0.15
+firebase.initializeApp(config);
+
+var fbProvider = new firebase.auth.FacebookAuthProvider();
+var users = firebase.database().ref("users");
+var items = firebase.database().ref("items");
+
+var imgRoot = firebase.storage().ref();
+
+$('#designer-view').hide();
+
+setTimeout(function(){
+    $('#designer-view').show();
+    $('#designer-view-loading').hide();
+},2000);
+
+var itemData = firebase.database().ref("items");
+itemData.once("value",function(input){
+    input.forEach(function(childIn){
+        var entry = childIn.val();
+        console.log(childIn.val());
+        imgRoot.child("items/"+ entry.userUID + "/" + entry.itemID + "/itemPic.jpg").getDownloadURL().then(function(picUrl){
+
+            $('#designer-view').append('<div class="designer-view-block" id="' + entry.itemID + '"></div>');
+
+            $('#' + entry.itemID).append('<h4>' + entry.itemStyle + '</h4>');
+            $('#' + entry.itemID).css('background-image','url(' + picUrl + ')');
+        })
+    });
 });

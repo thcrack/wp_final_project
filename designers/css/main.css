@@ -1,7 +1,6 @@
 body {
 
   background-color: #FFF;
-  overflow: hidden;
     
 }
 
@@ -88,6 +87,12 @@ body {
 
 .modal-dialog{
   width: 1000px;
+  position: relative;
+  background-color: white;
+  font-family: 'Lora', serif;
+  font-size: 1.2em;
+  color: black;
+  line-height: 200%;
 }
 
 .modal-content{
@@ -137,4 +142,33 @@ button.close {
 .content-pic {
   width: 100%;
   margin: 10px auto 10px auto;
+}
+
+#designer-view-loading {
+  margin: auto;
+  text-align: center;
+}
+
+.designer-view-block {
+  box-sizing: border-box;
+  display: inline-block;
+  cursor: pointer;
+  width: 300px;
+  height: 300px;
+  border: solid;
+  border-width: 0px;
+  background-position: center; 
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  transition: opacity 1s;
+}
+
+.designer-view-block:hover{
+  opacity: 0.5;
+}
+
+.designer-view-block h4 {
+  padding: 10px;
+  background-color: rgba(0,0,0,0.7);
 }
