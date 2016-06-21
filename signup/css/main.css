@@ -138,3 +138,38 @@ button.close {
   width: 100%;
   margin: 10px auto 10px auto;
 }
+
+
+#section-data-form, #section-profile{
+  display: none;
+}
+
+#designer-picBox, #item-picBox {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border: solid;
+  border-width: 2px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#designer-picData, #item-picData {
+  display: inline-block;
+}
+
+.designer-view-block {
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  border: solid;
+  border-width: 1px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.designer-view-block h4 {
+  padding: 5px;
+  background-color: black;
+}
