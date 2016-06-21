@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lora|Montserrat" rel="stylesheet">
+  <link href="img/logo.png" rel="SHORTCUT ICON">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+
+  <meta charset="utf-8">
+  <title>Tattoo Decision</title>
+</head>
+
+<body>
+
+<div class="wrapper">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid row">
+      <div class="navbar-header col-sm-1">
+        <a class="navbar-brand" href="#">
+          <img src="img/logo1.png" id="logo-pic" alt="Tattoo Decision">
+        </a>
+      </div>
+      <div class="navbar-blank col-sm-3"></div>
+      <ul class="nav navbar-nav col-sm-8 row">
+        <li class="col-sm-4"><a href="/wp_final_project">Home</a></li>
+        <li class="col-sm-4"><a href="/wp_final_project/designers">Designers</a></li>
+        <li class="active col-sm-4"><a href="#">Join Us</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="main">
+
+    <div id="section-signin">
+      <button type="button" class="btn btn-default" id="signin"> Sign In </button>
+    </div>
+
+    <div id="section-data-form">
+      <form id="designer-info">
+        <h5>Designer Name</h5>
+        <input type="text" name="userName">
+        <h5>Location</h5>
+        <input type="text" name="userLocation">
+        <h5>Phone Number</h5>
+        <input type="text" name="userPhone">
+        <h5>Description</h5>
+        <textarea name="userDesc" rows="10" cols="60"></textarea>
+        <h5>Profile Picture</h5>
+        <div id="designer-picBox"></div>
+        <input id="designer-picData" type="file" title="add Images" accept="image/*" name="pic">
+      </form>
+      <button type="button" class="btn btn-default" id="submitData"> Sign up! </button>
+    </div>
+
+    <div id="section-profile">
+      <div id="profile-name"></div>
+      <form id="item-info">
+        <label for="stylelist">Tattoo Style</label>
+          <select class="form-control" id="stylelist">
+            <option selected="selected"> Select a Style</option>
+            <option value="Neo-traditional">Neo-traditional</option>
+            <option value="Traditional">Traditional</option>
+            <option value="Realistic">Realistic</option>
+            <option value="Unrealistic">Unrealistic</option>
+            <option value="Surrealism">Surrealism</option>
+            <option value="Calligraphy">Calligraphy</option>
+            <option value="Lettering">Lettering</option>
+            <option value="Colour">Colour</option>
+            <option value="Cartoon">Cartoon</option>
+            <option value="Dotwork">Dotwork</option>
+            <option value="Fine line">Fine line</option>
+            <option value="Sketch">Sketch</option>
+            <option value="Mythical">Mythical</option>
+            <option value="Black and grey">Black and grey</option>
+            <option value="Japanese">Japanese</option>
+          </select>
+        <h5>Profile Picture</h5>
+        <div id="item-picBox"></div>
+        <input id="item-picData" type="file" title="add Images" accept="image/*" name="pic">
+      </form>
+      <button type="button" class="btn btn-default" id="submitItem"> Submit Item! </button>
+
+      <div id="designer-view"></div>
+
+      <button type="button" class="btn btn-default" id="signout"> Sign Out </button>
+    </div>
+
+  </div>
+</div>
+
+<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>
