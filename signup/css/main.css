@@ -138,23 +138,33 @@ button.close {
   margin: 10px auto 10px auto;
 }
 
+#signin {
+  margin-top: 200px;
+  padding: 200px;
+}
+
 #submitItem, #signout {
   margin: 20px 0px 20px 0px;
 }
 
+#section-signin {
+  margin: auto;
+  text-align: center;
+}
 
 #section-data-form, #section-profile{
   display: none;
 }
 
 #profile-name h1 {
-  margin: 40px;
+  padding: 40px 40px 40px 0px;
+  font-size: 5em;
 }
 
 #designer-picBox, #item-picBox {
   display: inline-block;
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  height: 300px;
   border: solid;
   border-width: 2px;
   background-size: contain;
@@ -162,7 +172,7 @@ button.close {
 }
 
 #designer-picData, #item-picData {
-  display: inline-block;
+  display: none;
 }
 
 .designer-view-block {
