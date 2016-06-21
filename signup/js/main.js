@@ -19,6 +19,7 @@ var currentUser = {
 var currentDesigner = {
     name: ""
 }
+var portfolioReady = false;
 
 var imgRoot = firebase.storage().ref();
 
@@ -74,6 +75,7 @@ $("#signout").click(function () {
         currentUser.uid = "";
         currentUser.photoURL = "";
         loginStatus(false);
+        portfolioReady = false;
 
     },function(error){
 
@@ -137,7 +139,7 @@ $("#submitItem").click(function () {
     console.log(styleVal);
     var picFile = $("#item-picData")[0].files[0];
 
-    if (styleVal != null && picFile ) {
+    if (styleVal != "default" && picFile ) {
 
         var newItem = items.push();
         var newID = newItem.key;
@@ -164,12 +166,14 @@ $("#submitItem").click(function () {
         });
 
         $("#item-info")[0].reset();
+        $("#item-picBox").css("background-image", "none");
 
-        setTimeout(getPortfolio, 5000);
+        setTimeout(getPortfolio, 3000);
     }
 });
 
 function getPortfolio(){
+    portfolioReady = true;
     $('#designer-view').empty();
     var itemData = firebase.database().ref("portfolio/" + currentUser.uid);
     itemData.once("value",function(input){
@@ -199,7 +203,7 @@ function loginStatus(isLoggedIn) {
         if(val != null){
             currentDesigner.name = val.userName;
             setProfile(val.userName);
-            getPortfolio();
+            if(!portfolioReady) getPortfolio();
             $("#section-data-form").css("display","none");
             $("#section-signin").css("display","none");
             $("#section-profile").css("display","block");
