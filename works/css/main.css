@@ -156,7 +156,7 @@ button.close {
   width: 300px;
   height: 300px;
   border: solid;
-  border-width: 0px;
+  border-width: 5px;
   background-position: center; 
   background-size: cover;
   background-repeat: no-repeat;
