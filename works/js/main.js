@@ -24,7 +24,7 @@ setTimeout(function(){
 var itemData = firebase.database().ref("items");
 var userData = firebase.database().ref("designers");
 
-itemData.once("value",function(input){
+itemData.limitToFirst(24).once("value",function(input){
     console.log("once");
     input.forEach(function(childIn){
         var entry = childIn.val();
