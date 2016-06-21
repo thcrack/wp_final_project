@@ -1,7 +1,6 @@
 body {
 
   background-color: #FFF;
-  overflow: hidden;
     
 }
 
@@ -139,9 +138,17 @@ button.close {
   margin: 10px auto 10px auto;
 }
 
+#submitItem, #signout {
+  margin: 20px 0px 20px 0px;
+}
+
 
 #section-data-form, #section-profile{
   display: none;
+}
+
+#profile-name h1 {
+  margin: 40px;
 }
 
 #designer-picBox, #item-picBox {
