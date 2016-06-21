@@ -168,15 +168,24 @@ $("#submitItem").click(function () {
         $("#item-info")[0].reset();
         $("#item-picBox").css("background-image", "none");
 
+        cueLoadingScreen();
         setTimeout(getPortfolio, 3000);
     }
 });
 
 //designer view area
 
+function cueLoadingScreen(){
+    $('#designer-view').hide();
+    $('#designer-view-loading').show();
+}
+
 function getPortfolio(){
+
     portfolioReady = true;
+
     $('#designer-view').empty();
+
     var itemData = firebase.database().ref("portfolio/" + currentUser.uid);
     itemData.once("value",function(input){
         input.forEach(function(childIn){
@@ -197,6 +206,7 @@ function getPortfolio(){
                         firebase.database().ref("style_catalog/" + entry.itemStyle + "/ " + entry.itemID).remove();
                         firebase.storage().ref("items/" + currentUser.uid + "/" + entry.itemID + "/itemPic.jpg").delete();
 
+                        cueLoadingScreen();
                         setTimeout(getPortfolio, 3000);
                     });
                 });
@@ -207,6 +217,9 @@ function getPortfolio(){
             })
         });
     });
+
+    $('#designer-view').show();
+    $('#designer-view-loading').hide();
 }
 
 function loginStatus(isLoggedIn) {
