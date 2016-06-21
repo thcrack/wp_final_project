@@ -172,6 +172,8 @@ $("#submitItem").click(function () {
     }
 });
 
+//designer view area
+
 function getPortfolio(){
     portfolioReady = true;
     $('#designer-view').empty();
@@ -184,13 +186,28 @@ function getPortfolio(){
 
                 $('#designer-view').append('<div class="designer-view-block" id="' + entry.itemID + '"></div>');
 
+                $('#' + entry.itemID).click(function(){
+
+                    var itemID = $(this).attr('id');
+                    console.log(itemID);
+                    firebase.database().ref("items/" + itemID).once("value", function(input){
+                        var entry = input.val();
+                        firebase.database().ref("items/" + entry.itemID).remove();
+                        firebase.database().ref("portfolio/" + currentUser.uid + "/" + entry.itemID).remove();
+                        firebase.database().ref("style_catalog/" + entry.itemStyle + "/ " + entry.itemID).remove();
+                        firebase.storage().ref("items/" + currentUser.uid + "/" + entry.itemID + "/itemPic.jpg").delete();
+
+                        setTimeout(getPortfolio, 3000);
+                    });
+                });
+
+
                 $('#' + entry.itemID).append('<h4>' + entry.itemStyle + '</h4>');
                 $('#' + entry.itemID).css('background-image','url(' + picUrl + ')');
             })
         });
     });
 }
-
 
 function loginStatus(isLoggedIn) {
 
