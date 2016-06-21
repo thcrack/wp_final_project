@@ -22,7 +22,9 @@ setTimeout(function(){
 },2000);
 
 var itemData = firebase.database().ref("items");
+
 itemData.once("value",function(input){
+    console.log("once");
     input.forEach(function(childIn){
         var entry = childIn.val();
         console.log(childIn.val());
