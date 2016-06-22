@@ -53,45 +53,18 @@ body {
   margin: auto;
 }
 
-.carousel-indicators li{
-  margin: 4px;
-}
-
-.carousel-indicators .active{
-  margin: 3px;
-}
-
-.carousel-control.left, .carousel-control.right {
-  display: none;
-  background-image: none;
-  height: 40%;
-  top: 60%;
-}
-
-.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right {
-  top: 50%;
-}
-
-.intro-content p {
-  text-align: left;
-  margin: 20px;
-}
-
-.carousel-inner > .item > img,
-.carousel-inner > .item > a > img {
-    cursor: pointer;
-    width: 100%;
-    height: auto;
-    margin: auto;
-}
-
 .modal-dialog{
   width: 1000px;
+  font-family: 'Lora', serif;
+  font-size: 1.2em;
+  color: black;
+  line-height: 200%;
 }
 
 .modal-content{
   border-radius: 0px;
   border: none;
+  padding: 20px;
 }
 
 .modal-header {
@@ -130,21 +103,27 @@ button.close {
   font-size: 2em;
 }
 
-.glyphicon {
-  font-size: 2em;
-}
 .content-pic {
   width: 100%;
   margin: 10px auto 10px auto;
 }
 
-#signin {
-  margin-top: 200px;
-  padding: 200px;
+#section-signin{
+  position: relative;
+  height: 800px;
+  width: 100%;
+  background: url('../img/login.png') no-repeat center;
+  background-size: cover;
 }
 
-#submitItem, #signout {
-  margin: 20px 0px 20px 0px;
+#signin {
+  position: absolute;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5em;
+  left: 173px;
+  top: 444px;
+  height: 75px;
+  width: 310px;
 }
 
 #section-signin {
@@ -156,29 +135,110 @@ button.close {
   display: none;
 }
 
+#section-data-form {
+  margin: 100px;
+}
+
 #profile-name h1 {
-  padding: 40px 40px 40px 0px;
-  font-size: 5em;
+  padding: 40px 40px 40px 20px;
+  font-size: 4em;
+}
+
+#section-data-form h1 {
+  font-size: 4em;
+  margin-bottom: 20px;
+}
+
+label {
+  font-family: 'Montserrat', sans-serif;
+  padding: 10px 0px;
+}
+
+#form-left{
+  display: inline-block;
+  padding-right: 10%;
+  height: 500px;
+}
+
+#form-right {
+  display: inline-block;
+  position: absolute;
+}
+
+#upload-modal .modal-dialog{
+  width: 800px;
+}
+
+#submitItem {
+  width: 100%;
+  height: 20%;
+  margin-top: 215px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5em;
+}
+
+#item-left, #item-right {
+  padding: 3% 10%;
+}
+
+#menu-panel {
+  width: 100%;
+  height: 400px;
+  margin: 0px;
+}
+
+.menu-button{
+  width: 100%;
+  height: 370px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5em;
+  text-align: center;
+  transition: background-color 0.5s;
+}
+
+.glyphicon {
+  display: block;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+#signout {
+  margin: auto;
+  width: 30%;
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3em;
+  text-align: center;
+  transition: background-color 0.5s;
 }
 
 #designer-picBox, #item-picBox {
-  display: inline-block;
   cursor: pointer;
   width: 300px;
   height: 300px;
   border: solid;
   border-width: 2px;
+  border-radius: 20px;
   background-position: center; 
   background-size: cover;
   background-repeat: no-repeat;
   transition: opacity 1s;
 }
+
 #designer-picBox:hover, #item-picBox:hover {
   opacity: 0.5;
 }
 
 #designer-picData, #item-picData {
   display: none;
+}
+
+#submitData {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5em;
+  margin-top: 35px;
+  height: 75px;
+  width: 300px;
 }
 
 #designer-view-loading {

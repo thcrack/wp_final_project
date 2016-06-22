@@ -105,7 +105,7 @@ $("#submitData").click(function () {
     var dataArr = $("#designer-info").serializeArray();
     var picFile = $("#designer-picData")[0].files[0];
 
-    if (dataArr[0].value != null && dataArr[1].value != null && dataArr[2].value != null && dataArr[3].value != null && picFile ) {
+    if (dataArr[0].value != null && dataArr[1].value != "default" && dataArr[2].value != null && picFile ) {
 
         imgRoot.child("profile/" + currentUser.uid + "/profilePic.jpg").put(picFile);
         firebase.database().ref("designers/" + currentUser.uid).set({
