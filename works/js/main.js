@@ -27,6 +27,11 @@ var pageCount = 0;
 getData(itemData);
 buildFilter();
 
+$('#view-all-works').click(function(){
+	getData(itemData);
+	currentPage = 1;
+});
+
 function buildFilter(){
 
 	//regions
@@ -43,7 +48,7 @@ function buildFilter(){
 
 	//designers
 
-	firebase.database().ref("designers").orderByKey().once("value",function(designerList){
+	firebase.database().ref("designers").orderByChild('userName').once("value",function(designerList){
 		designerList.forEach(function(sDesigner){
 			createFilterDesignerDOM(sDesigner);
 		});
@@ -161,7 +166,7 @@ function getNewPage(pageNum){
 	    
 		toggleLoading(false);
 
-	},2000);
+	},1000);
 
 	loadDataFromArray(pageNum);
 
@@ -171,6 +176,8 @@ function loadDataFromArray(page){
 
 	$('#designer-view').empty();
 	console.log(itemCacheArray);
+
+	itemCacheArray = shuffle(itemCacheArray);
 
 	for(i = ITEMS_PER_PAGE*(page-1); i < ITEMS_PER_PAGE*page; i++){
 		if(i >= itemCacheArray.length) break;
@@ -221,4 +228,21 @@ function createDOM(entry){
         $('#' + entry.itemID).append('<h4>' + entry.itemStyle + '</h4>');
         $('#' + entry.itemID).css('background-image','url(' + picUrl + ')');
     })
+}
+
+//util
+
+function shuffle(array) {
+  var m = array.length, t, i;
+
+  while (m) {
+
+    i = Math.floor(Math.random() * m--);
+
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+  }
+
+  return array;
 }

@@ -156,14 +156,39 @@ button.close {
   margin: 20px;
 }
 
-.btn-primary {
-  background-color: black;
+.btn-primary, .btn-primary:focus {
+  background-color: gray;
+  width: 200px;
+  height: 60px;
   border: none;
   border-radius: 0px;
+  transition: background-color 0.3s;
 }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .open > .dropdown-toggle.btn-primary, .open > .dropdown-toggle.btn-primary:focus, .open > .dropdown-toggle.btn-primary:hover {
-  background-color: gray;
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active{
+  background-color: black;
+}
+
+.dropdown-menu{
+  border-radius: 0px;
+  border: none;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.dropdown-menu li {
+  width: 200px;
+  text-align: center;
+}
+
+.dropdown-menu > li > a {
+  padding: 8px 0px;
+  transition: color 0.3s;
+}
+
+.dropdown-menu > li > a:hover {
+  background-color: black;
+  color: white;
 }
 
 .designer-view-block {
