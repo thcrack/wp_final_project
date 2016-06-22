@@ -89,6 +89,18 @@ button.close {
   margin: 20px 30px 20px 30px;
 }
 
+.modal-footer {
+  text-align: left;
+}
+
+.alert {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.alert strong {
+  margin-right: 10px;
+}
+
 .modal-backdrop.in {
   opacity: 0.8;
 }

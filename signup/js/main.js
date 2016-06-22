@@ -135,6 +135,8 @@ $("#item-picData").change(function(){
 
 $("#submitItem").click(function () {
 
+    $('#upload-notify').empty();
+
     var styleVal = $('#stylelist option:selected').val();
     console.log(styleVal);
     var picFile = $("#item-picData")[0].files[0];
@@ -168,8 +170,14 @@ $("#submitItem").click(function () {
         $("#item-info")[0].reset();
         $("#item-picBox").css("background-image", "none");
 
+        $('#upload-notify').append('<div class="alert alert-success"><strong>Success!</strong>Uploaded Successfully!</div>');
+
         cueLoadingScreen();
         setTimeout(getPortfolio, 3000);
+    }else if(styleVal == "default"){
+        $('#upload-notify').append('<div class="alert alert-warning"><strong>Warning!</strong>Please select a style.</div>');
+    }else{
+        $('#upload-notify').append('<div class="alert alert-warning"><strong>Warning!</strong>Please select a picture.</div>');
     }
 });
 
