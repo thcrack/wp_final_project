@@ -102,6 +102,7 @@ body {
 
 .modal-header {
   padding: 25px 15px 25px 15px;
+  border: none;
 }
 
 button.close {
@@ -113,13 +114,13 @@ button.close {
 }
 
 .modal-body img {
-  margin-right: 0px;
-  margin-left: 0px;
-  max-width: 100%;
+  margin-right: 30px;
+  margin-left: 30px;
+  max-width: 940px;
 }
 
 .modal-body p {
-  margin: 20px 30px 20px 30px;
+  margin: 20px 60px 20px 60px;
 }
 
 .modal-backdrop.in {
@@ -157,7 +158,7 @@ button.close {
 }
 
 .btn-primary, .btn-primary:focus {
-  background-color: gray;
+  background-color: #666;
   width: 200px;
   height: 60px;
   border: none;
@@ -191,7 +192,36 @@ button.close {
   color: white;
 }
 
+.designer-view {
+  margin: auto;
+}
+
+.designer-view-block-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 31;
+  background-color: rgba(255,255,255,0);
+  transition: background-color 1s;
+}
+
+.designer-view-block-mask:hover {
+  background-color: rgba(255,255,255,0.4);
+}
+
+.designer-view-block-mask:hover h4 {
+  background-color: rgba(0,0,0,1);
+}
+
+.designer-view-block-mask h4 {
+  z-index: 32;
+  padding: 10px;
+  background-color: rgba(0,0,0,0.6);
+  transition: background-color 1s;
+}
+
 .designer-view-block {
+  position: relative;
   box-sizing: border-box;
   display: inline-block;
   cursor: pointer;
@@ -200,19 +230,14 @@ button.close {
   border: solid;
   border-width: 5px;
   background-position: center; 
-  background-size: cover;
+  background-size: 150%;
   background-repeat: no-repeat;
   color: white;
-  transition: opacity 1s;
+  transition: background-size 0.5s;
 }
 
-.designer-view-block:hover{
-  opacity: 0.5;
-}
-
-.designer-view-block h4 {
-  padding: 10px;
-  background-color: rgba(0,0,0,0.7);
+.designer-view-block:hover {
+  background-size: 200%;
 }
 
 #work-dialog {
@@ -251,13 +276,35 @@ button.close {
 #work-designer-pic {
 
   display: inline-block;
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
   background-position: center; 
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+span.glyphicon {
+    font-size: 0.8em;
+    margin-right: 10px;
+}
+
+#name-inner {
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 200%;
+}
+
+#name-inner, #location-inner {
+  color: black;
+  cursor: pointer;
+}
+
+#name-inner:hover, #location-inner:hover {
+  color: #666;
+  text-decoration: none;
+}
+
 
 #designer-view-paging {
   margin: auto;

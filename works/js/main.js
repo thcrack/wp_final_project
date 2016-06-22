@@ -174,7 +174,6 @@ function getNewPage(pageNum){
 
 function loadDataFromArray(page){
 
-	$('#designer-view').empty();
 	console.log(itemCacheArray);
 
 	itemCacheArray = shuffle(itemCacheArray);
@@ -189,6 +188,9 @@ function loadDataFromArray(page){
 }
 
 function createDOM(entry){
+
+	$('#designer-view').empty();
+
 	imgRoot.child("items/"+ entry.userUID + "/" + entry.itemID + "/itemPic.jpg").getDownloadURL().then(function(picUrl){
 
         $('#designer-view').append('<div class="designer-view-block" id="' + entry.itemID + '"></div>');
@@ -213,10 +215,34 @@ function createDOM(entry){
                     $('#work-designer').append('<div id="work-designer-pic">');
                     $('#work-designer-pic').css('background-image','url(' + inUrl + ')');
 
-                    $('#work-designer').append('<div id="work-designer-name">' + author.userName + '</div>');
-                    $('#work-designer').append('<div id="work-designer-location">' + author.userLocation + '</div>');
-                    $('#work-designer').append('<div id="work-designer-phone">' + author.userPhone + '</div>');
-                    $('#work-designer').append('<div id="work-designer-desc">' + author.userDesc + '</div>');
+                    $('#work-designer').append('<div id="work-designer-name"><a id="name-inner">' + author.userName + '</a></div>');
+                    $('#work-designer').append('<div id="work-designer-location"><span class="glyphicon glyphicon-home"></span><a id="location-inner">' + author.userLocation + '</a></div>');
+                    $('#work-designer').append('<div id="work-designer-phone"><span class="glyphicon glyphicon-phone"></span>' + author.userPhone + '</div>');
+                    $('#work-designer').append('<div id="work-designer-desc"><span class="glyphicon glyphicon-info-sign"></span>' + author.userDesc + '</div>');
+
+                    $('#name-inner').click(function(){
+                    	getData(firebase.database().ref("portfolio/" + author.userUID));
+						currentPage = 1;
+						$('#work-view-modal').modal('hide');
+                    });
+
+                    $('#location-inner').click(function(){
+						currentPage = 1;
+						firebase.database().ref("designers").orderByChild('userLocation').startAt(author.userLocation).endAt(author.userLocation).once("value",function(rdList){
+							toggleLoading(true);
+							itemCacheArray = new Array();
+							dataCount = 0;
+							rdList.forEach(function(input){
+								loadPortfolio(input);
+							});
+							setTimeout(function(){
+					        	pageCount = Math.ceil(dataCount/ITEMS_PER_PAGE);
+					        	getNewPage(1);
+					        	currentPage = 1;
+					        },500);
+						});
+						$('#work-view-modal').modal('hide');
+                    });
 
                 });
 
@@ -225,7 +251,8 @@ function createDOM(entry){
             $('#work-view-modal').modal('show');
         });
 
-        $('#' + entry.itemID).append('<h4>' + entry.itemStyle + '</h4>');
+        $('#' + entry.itemID).append('<div class="designer-view-block-mask"></div>');
+        $('#' + entry.itemID + " .designer-view-block-mask").append('<h4>' + entry.itemStyle + '</h4>');
         $('#' + entry.itemID).css('background-image','url(' + picUrl + ')');
     })
 }
