@@ -144,9 +144,26 @@ button.close {
   margin: 10px auto 10px auto;
 }
 
-#designer-view-loading {
+#designer-view-filter {
   margin: auto;
   text-align: center;
+}
+
+.dropdown {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2em;
+  margin: 20px;
+}
+
+.btn-primary {
+  background-color: black;
+  border: none;
+  border-radius: 0px;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .open > .dropdown-toggle.btn-primary, .open > .dropdown-toggle.btn-primary:focus, .open > .dropdown-toggle.btn-primary:hover {
+  background-color: gray;
 }
 
 .designer-view-block {
@@ -215,4 +232,33 @@ button.close {
   background-position: center; 
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+#designer-view-paging {
+  margin: auto;
+  text-align: center;
+}
+
+#designer-view-loading {
+  margin: auto;
+  padding: 200px;
+  text-align: center;
+}
+
+#paging-bar {
+  font-family: 'Montserrat', sans-serif;
+}
+
+#paging-bar a{
+  color: black;
+  border: none;
+}
+
+#paging-bar .active a{
+  background-color: black;
+  color: white;
+}
+
+.pagination-lg > li:first-child > a, .pagination-lg > li:last-child > a {
+  border-radius: 0px;
 }
