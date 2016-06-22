@@ -192,8 +192,9 @@ button.close {
   color: white;
 }
 
-.designer-view {
+#designer-view {
   margin: auto;
+  line-height: 0px;
 }
 
 .designer-view-block-mask {
@@ -210,14 +211,15 @@ button.close {
 }
 
 .designer-view-block-mask:hover h4 {
-  background-color: rgba(0,0,0,1);
+  opacity: 1;
 }
 
 .designer-view-block-mask h4 {
   z-index: 32;
   padding: 10px;
-  background-color: rgba(0,0,0,0.6);
-  transition: background-color 1s;
+  background-color: black;
+  opacity: 0;
+  transition: opacity 1s;
 }
 
 .designer-view-block {
@@ -228,7 +230,7 @@ button.close {
   width: 300px;
   height: 300px;
   border: solid;
-  border-width: 5px;
+  border-width: 0px;
   background-position: center; 
   background-size: 150%;
   background-repeat: no-repeat;
