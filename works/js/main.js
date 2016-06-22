@@ -51,13 +51,12 @@ function buildFilter(){
 
 }
 
-var rIndex = 0;
-
 function createFilterRegionDOM(r){
 
 	var rName = r.val().name;
 	$('#filter-region-list').append('<li><a href="#designer-view-loading" value="' + rName + '">' + rName + '</a></li>');
 	$('#filter-region-list a[value="' + rName + '"]').click(function(){
+		currentPage = 1;
 		firebase.database().ref("designers").orderByChild('userLocation').startAt(rName).endAt(rName).once("value",function(rdList){
 			toggleLoading(true);
 			itemCacheArray = new Array();
@@ -66,6 +65,11 @@ function createFilterRegionDOM(r){
 			rdList.forEach(function(input){
 				loadPortfolio(input);
 			});
+			setTimeout(function(){
+	        	pageCount = Math.ceil(dataCount/ITEMS_PER_PAGE);
+	        	getNewPage(1);
+	        	currentPage = 1;
+	        },500);
 		});
 	});
 };
@@ -77,12 +81,6 @@ function loadPortfolio(input){
 	    wInput.forEach(function(childIn){
 	    	console.log(childIn.val());
 	        itemCacheArray.push(childIn.val());
-	        rIndex ++;
-	        if(rIndex==dataCount){
-	        	pageCount = Math.ceil(dataCount/ITEMS_PER_PAGE);
-	        	getNewPage(1);
-	        	currentPage = 1;
-	        }
 	    });
 	});
 }
@@ -91,6 +89,7 @@ function createFilterStyleDOM(){
 
 	$('#filter-style-list a').click(function(){
 		getData(firebase.database().ref("style_catalog/" + $(this).attr('value')));
+		currentPage = 1;
 	})
 
 };
@@ -101,6 +100,7 @@ function createFilterDesignerDOM(r){
 	$('#filter-designer-list').append('<li><a href="#designer-view-loading" value="' + rName + '">' + rName + '</a></li>');
 	$('#filter-designer-list a[value="' + rName + '"]').click(function(){
 		getData(firebase.database().ref("portfolio/" + r.val().userUID));
+		currentPage = 1;
 	})
 
 };
@@ -110,7 +110,7 @@ function buildPagination(){
 	$('#designer-view-paging').append('<ul class="pagination pagination-lg" id="paging-bar"></ul>');
 	for(var i = 0; i < pageCount; i++){
 		var page = i + 1;
-		if(currentPage == page){
+		if(parseInt(currentPage) == page){
 			$('#paging-bar').append('<li class="active"><a>' + parseInt(page) + '</a></li>');
 		}else{
 			$('#paging-bar').append('<li><a href="#designer-view-loading" page="' + parseInt(page) + '">' + parseInt(page) + '</a></li>');
