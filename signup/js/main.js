@@ -133,6 +133,10 @@ $("#item-picData").change(function(){
     }})(imgF);
 });
 
+$('#upload-button'){
+    $('#upload-notify').empty();
+}
+
 $("#submitItem").click(function () {
 
     $('#upload-notify').empty();
