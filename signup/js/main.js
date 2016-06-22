@@ -133,9 +133,9 @@ $("#item-picData").change(function(){
     }})(imgF);
 });
 
-$('#upload-button'){
+$('#upload-button').click(function(){
     $('#upload-notify').empty();
-}
+});
 
 $("#submitItem").click(function () {
 
