@@ -273,6 +273,7 @@ button.close {
   width: 300px;
   height: 700px;
   background-color: #FFF;
+  word-wrap: break-word;
 }
 
 #work-designer-pic {
@@ -297,12 +298,12 @@ span.glyphicon {
   line-height: 200%;
 }
 
-#name-inner, #location-inner {
+#name-inner, #location-inner, #style-inner {
   color: black;
   cursor: pointer;
 }
 
-#name-inner:hover, #location-inner:hover {
+#name-inner:hover, #location-inner:hover, #style-inner:hover {
   color: #666;
   text-decoration: none;
 }

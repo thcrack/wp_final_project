@@ -65,13 +65,13 @@ function createFilterRegionDOM(r){
 		firebase.database().ref("designers").orderByChild('userLocation').startAt(rName).endAt(rName).once("value",function(rdList){
 			toggleLoading(true);
 			itemCacheArray = new Array();
-			rIndex = 0;
 			dataCount = 0;
 			rdList.forEach(function(input){
 				loadPortfolio(input);
 			});
 			setTimeout(function(){
 	        	pageCount = Math.ceil(dataCount/ITEMS_PER_PAGE);
+				itemCacheArray = shuffle(itemCacheArray);
 	        	getNewPage(1);
 	        	currentPage = 1;
 	        },500);
@@ -123,7 +123,6 @@ function buildPagination(){
 		$('#paging-bar a[page="' + parseInt(page) + '"]').click(function(){
 			currentPage = parseInt($(this).attr('page'));
 			getNewPage(currentPage);
-			console.log("fired");
 		});
 	}
 }
@@ -139,6 +138,7 @@ function getData(data){
 	        itemCacheArray.push(childIn.val());
 	        index ++;
 	        if(index==dataCount){
+				itemCacheArray = shuffle(itemCacheArray);
 	        	getNewPage(1);
 	        	currentPage = 1;
 	        }
@@ -175,9 +175,6 @@ function getNewPage(pageNum){
 function loadDataFromArray(page){
 
 	console.log(itemCacheArray);
-
-	itemCacheArray = shuffle(itemCacheArray);
-
 	for(i = ITEMS_PER_PAGE*(page-1); i < ITEMS_PER_PAGE*page; i++){
 		if(i >= itemCacheArray.length) break;
 		var sItem = itemCacheArray[i];
@@ -218,10 +215,17 @@ function createDOM(entry){
                     $('#work-designer').append('<div id="work-designer-name"><a id="name-inner">' + author.userName + '</a></div>');
                     $('#work-designer').append('<div id="work-designer-location"><span class="glyphicon glyphicon-home"></span><a id="location-inner">' + author.userLocation + '</a></div>');
                     $('#work-designer').append('<div id="work-designer-phone"><span class="glyphicon glyphicon-phone"></span>' + author.userPhone + '</div>');
+                    $('#work-designer').append('<div id="work-designer-phone"><span class="glyphicon glyphicon-tag"></span><a id="style-inner">' + entry.itemStyle + '</a></div>');
                     $('#work-designer').append('<div id="work-designer-desc"><span class="glyphicon glyphicon-info-sign"></span>' + author.userDesc + '</div>');
 
                     $('#name-inner').click(function(){
                     	getData(firebase.database().ref("portfolio/" + author.userUID));
+						currentPage = 1;
+						$('#work-view-modal').modal('hide');
+                    });
+
+                    $('#style-inner').click(function(){
+                    	getData(firebase.database().ref("style_catalog/" + entry.itemStyle));
 						currentPage = 1;
 						$('#work-view-modal').modal('hide');
                     });
@@ -260,16 +264,17 @@ function createDOM(entry){
 //util
 
 function shuffle(array) {
-  var m = array.length, t, i;
 
-  while (m) {
+	var m = array.length, t, i;
 
-    i = Math.floor(Math.random() * m--);
+	while (m) {
 
-    t = array[m];
-    array[m] = array[i];
-    array[i] = t;
-  }
+		i = Math.floor(Math.random() * m--);
 
-  return array;
+		t = array[m];
+		array[m] = array[i];
+		array[i] = t;
+	}
+
+	return array;
 }

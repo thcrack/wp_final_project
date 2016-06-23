@@ -22,6 +22,10 @@ body {
   margin-right: auto;
 }
 
+.btn {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .navbar {
   position: fixed;
   font-family: 'Montserrat', sans-serif;
@@ -143,7 +147,7 @@ button.close {
   text-align: center;
 }
 
-#section-data-form, #section-profile{
+#section-data-form, #section-profile, #section-portfolio{
   display: none;
 }
 
@@ -166,13 +170,13 @@ label {
   padding: 10px 0px;
 }
 
-#form-left{
+#form-left, #edit-form-left{
   display: inline-block;
   padding-right: 10%;
   height: 500px;
 }
 
-#form-right {
+#form-right, #edit-form-right{
   display: inline-block;
   position: absolute;
 }
@@ -189,7 +193,17 @@ label {
   font-size: 1.5em;
 }
 
-#item-left, #item-right {
+#go-to-manage {
+  margin: 0px 15px;
+}
+
+#back-to-profile {
+  width: 100px;
+  height: 50px;
+  margin: 20px 20px 20px 0px;
+}
+
+#item-left, #item-right{
   padding: 3% 10%;
 }
 
@@ -208,6 +222,29 @@ label {
   transition: background-color 0.5s;
 }
 
+#prompt-dialog, #edit-dialog {
+  width: 400px;
+}
+
+#view-dialog {
+  width: 800px;
+  height: 800px;
+}
+
+#view-dialog .modal-content {
+  padding: 0px;
+}
+
+#prompt-body {
+  text-align: center;
+}
+
+#prompt-body button {
+  width: 100px;
+  height: 50px;
+  margin: 20px;
+}
+
 .glyphicon {
   display: block;
   font-size: 2.5em;
@@ -224,7 +261,7 @@ label {
   transition: background-color 0.5s;
 }
 
-#designer-picBox, #item-picBox {
+#designer-picBox, #item-picBox, #edit-designer-picBox {
   cursor: pointer;
   width: 300px;
   height: 300px;
@@ -237,15 +274,15 @@ label {
   transition: opacity 1s;
 }
 
-#designer-picBox:hover, #item-picBox:hover {
+#designer-picBox:hover, #item-picBox:hover, #edit-designer-picBox:hover {
   opacity: 0.5;
 }
 
-#designer-picData, #item-picData {
+#designer-picData, #item-picData, #edit-designer-picData {
   display: none;
 }
 
-#submitData {
+#submitData, #edit-submitData {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.5em;
   margin-top: 35px;
@@ -261,7 +298,6 @@ label {
 .designer-view-block {
   box-sizing: border-box;
   display: inline-block;
-  cursor: pointer;
   width: 300px;
   height: 300px;
   border: solid;
@@ -270,14 +306,64 @@ label {
   background-size: cover;
   background-repeat: no-repeat;
   color: white;
-  transition: opacity 1s;
 }
 
-.designer-view-block:hover{
-  opacity: 0.5;
+.designer-view-block:hover .grid-button-row{
+  opacity: 1;
+}
+
+.designer-view-block:hover h4{
+  opacity: 1;
 }
 
 .designer-view-block h4 {
+  opacity: 0;
   padding: 10px;
   background-color: rgba(0,0,0,0.7);
+  transition: opacity 0.4s;
+}
+
+#edit-buttons {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#edit-buttons .btn {
+  margin: 15px;
+}
+
+#view-prompt-img {
+  width: 800px;
+  height: 800px;
+  background-position: center; 
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#prompt-yes .glyphicon-trash {
+  display: inline-block;
+  font-size: 1em;
+  margin-left: 5px;
+  margin-bottom: 0px;
+}
+
+.grid-button-row {
+  opacity: 0;
+  margin: 170px 15px 0px 15px;
+  transition: opacity 0.4s;
+}
+
+.grid-button-row .center-block {
+  display: inline-block;
+}
+
+.designer-view-block .btn {
+  width: 100%;
+  height: 100%;
+  font-size: 0.4em;
+  padding: 5px;
+}
+
+.designer-view-block .glyphicon {
+  margin: 10px;
 }
