@@ -45,13 +45,20 @@
   <div class="main">
 
     <div id="section-signin">
-      <button type="button" class="btn btn-primary btn-lg" id="signin"> Sign In via Facebook</button>
+      <div id="signin-info">
+        
+        <h1>Share</h1>
+        <h1>Your</h1>
+        <h1>Works</h1>
+        <h2>Tattoo Decision</h2>
+      </div>
+      <button type="button" class="btn btn-primary btn-lg" id="signin">Sign In via Facebook</button>
     </div>
 
     <div id="section-data-form">
       <h1>Just a moment...</h1>
-      <form id="designer-info">
-        <div id="form-left">
+      <form id="designer-info" class="row">
+        <div id="form-left" class="col-md-8">
           <label for="user-name">Designer Name</label>
           <input type="text" class="form-control" name="userName" id="user-name">
           <label for="location-list">Location</label>
@@ -85,7 +92,7 @@
           <label for="user-desc">Description</label>
           <textarea maxlength="200" class="form-control" name="userDesc" rows="5" cols="60" id="user-desc"></textarea>
         </div>
-        <div id="form-right">
+        <div id="form-right" class="col-md-4">
           <label for="designer-picData">Profile Picture</label>
           <div id="designer-picBox"></div>
           <input id="designer-picData" type="file" title="add Images" accept="image/*" name="pic">
@@ -166,7 +173,7 @@
                 <option value="Black and grey">Black and grey</option>
                 <option value="Japanese">Japanese</option>
               </select>
-              <button type="button" class="btn btn-success" id="submitItem">Submit Item!</button>
+              <button type="button" class="btn btn-success" id="submitItem">Submit!</button>
             </div>
           </form>
         </div>
@@ -228,9 +235,9 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h2 class="modal-title">Edit Profile</h2>
         </div>
-        <div class="modal-body" >
+        <div class="modal-body row">
           <form id="edit-designer-info">
-            <div id="edit-form-left">
+            <div id="edit-form-left" class="col-sm-8">
               <label for="user-name">Designer Name</label>
               <input type="text" class="form-control" name="userName" id="edit-user-name">
               <label for="edit-location-list">Location</label>
@@ -264,7 +271,7 @@
               <label for="edit-user-desc">Description</label>
               <textarea maxlength="200" class="form-control" name="userDesc" rows="5" cols="60" id="edit-user-desc"></textarea>
             </div>
-            <div id="edit-form-right">
+            <div id="edit-form-right" class="col-sm-4">
               <label for="edit-designer-picData">Profile Picture</label>
               <div id="edit-designer-picBox"></div>
               <input id="edit-designer-picData" type="file" title="add Images" accept="image/*" name="pic">

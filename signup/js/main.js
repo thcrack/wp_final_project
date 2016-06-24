@@ -441,6 +441,7 @@ function loginStatus(isLoggedIn) {
             $("#section-profile").css("display","block");
         }else{
             $("#section-data-form").css("display","block");
+            $("#section-portfolio").css("display","none");
             $("#section-signin").css("display","none");
             $("#section-profile").css("display","none");
         }
@@ -450,6 +451,7 @@ function loginStatus(isLoggedIn) {
 
     $("#section-data-form").css("display","none");
     $("#section-signin").css("display","block");
+    $("#section-portfolio").css("display","none");
     $("#section-profile").css("display","none");
 
   }

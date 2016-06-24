@@ -171,7 +171,7 @@ label {
   padding: 10px 0px;
 }
 
-#form-left, #edit-form-left{
+/*#form-left, #edit-form-left{
   display: inline-block;
   padding-right: 10%;
   height: 500px;
@@ -180,7 +180,7 @@ label {
 #form-right, #edit-form-right{
   display: inline-block;
   position: absolute;
-}
+}*/
 
 #upload-modal .modal-dialog{
   width: 800px;
@@ -189,7 +189,7 @@ label {
 #submitItem {
   width: 100%;
   height: 20%;
-  margin-top: 215px;
+  margin-top: 20px;
   font-family: 'Montserrat', sans-serif;
   font-size: 1.5em;
 }
@@ -264,8 +264,9 @@ label {
 
 #designer-picBox, #item-picBox, #edit-designer-picBox {
   cursor: pointer;
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
   border: solid;
   border-width: 2px;
   border-radius: 20px;
@@ -288,7 +289,7 @@ label {
   font-size: 1.5em;
   margin-top: 35px;
   height: 75px;
-  width: 300px;
+  width: 100%;
 }
 
 #designer-view-loading {
@@ -369,11 +370,115 @@ label {
   margin: 10px;
 }
 
+#signin-info {
+  display: none;
+}
+
 @media screen and (max-width: 1200px) {
   .navbar {
     width: auto;
   }
   #wrapper {
     width: auto;
+  }
+  #section-signin{
+    position: relative;
+    text-align: center;
+    width: 100%;
+    background: url('../img/signup-small.jpg') no-repeat center;
+    background-size: cover;
+  }
+  #signin-info{
+    display: block;
+    width: 100%;
+    height: 300px;
+    padding-top: 10px;
+    line-height: 175%;
+    background-color: rgba(255,255,255,0.8);
+  }
+  #signin-info h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+  }
+  #signin-info h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    color: #666;
+  }
+  #signin {
+    position: static;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+    margin-top: 50px;
+    height: 75px;
+    width: 310px;
+  }
+  #profile-name{
+    text-align: center;
+  }
+  #menu-panel{
+    height: auto;
+    text-align: center;
+  }
+  .menu-button{
+    width: 50%;
+    min-width: 200px;
+    margin: 15px;
+    height: 150px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+    text-align: center;
+    transition: background-color 0.5s;
+  }
+  #signout {
+    margin: auto;
+    width: 30%;
+    min-width: 150px;
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 20px;
+    font-size: 1.3em;
+    text-align: center;
+    transition: background-color 0.5s;
+  }
+
+  #upload-modal .modal-dialog {
+    width: 80%;
+  }
+
+  #section-portfolio {  
+    min-width: 440px;
+  }
+
+  .designer-view-block {
+    width: 50%;
+    height: 0;
+    padding-bottom: 50%;
+  }
+  .grid-button-row {
+    margin-top: 0%;
+    text-align: center;
+  }
+  .designer-view-block .btn{
+    width: 50%;
+    margin: 5px;
+  }
+  .designer-view-block .glyphicon{
+    margin: 5px;
+  }
+  #profile-edit-dialog{
+    width: 80%;
+  }
+  #prompt-dialog, #edit-dialog {
+    width: 100%;
+  }
+  #view-dialog {
+    width: 70%;
+  }
+  #view-prompt-img {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
   }
 }
