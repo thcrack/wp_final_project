@@ -121,7 +121,7 @@ button.close {
 }
 
 .modal-body p {
-  margin: 20px 60px 20px 60px;
+  margin: 20px 40px 20px 40px;
 }
 
 .modal-backdrop.in {
@@ -351,7 +351,7 @@ span.glyphicon {
     padding-bottom: 50%;
   }
   .modal-dialog {
-    width: 70%;
+    width: 80%;
   }
   .modal-body img {
     width: 100%;
@@ -382,4 +382,13 @@ span.glyphicon {
   #column-slideshow {
     margin-bottom: 10px;
   }
+}
+
+body.modal-open {
+overflow-y: scroll;
+padding-right: 0 !important;
+}
+
+.modal {
+margin-left: 17px;
 }
