@@ -29,6 +29,7 @@ body {
 .navbar {
   position: fixed;
   font-family: 'Montserrat', sans-serif;
+  margin: auto;
   font-size: 1.2em;
   width: 1200px;
   top: 0;
@@ -366,4 +367,13 @@ label {
 
 .designer-view-block .glyphicon {
   margin: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+  .navbar {
+    width: auto;
+  }
+  #wrapper {
+    width: auto;
+  }
 }

@@ -183,3 +183,27 @@ button.close {
   text-align: center;
   font-size: 2em;
 }
+
+@media screen and (max-width: 1200px) {
+  .navbar {
+    width: auto;
+  }
+  #wrapper {
+    width: auto;
+  }
+  .header-pic-text {
+    background-color: rgba(255,255,255,0.7);
+  }
+  .header-nav a {
+    padding: 5px 30%;
+  }
+  .header-pic {
+    height: 600px;
+  }
+  .intro-content p {
+    font-size: 0.8em;
+  }
+  .content-pic {
+    height: 400px;
+  }
+}

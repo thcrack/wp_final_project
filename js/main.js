@@ -1,7 +1,7 @@
 (function($) {
 
 	$(document).ready(function(){
-
+		
 	    // hide .navbar first
 	    $(".navbar").hide();
 
@@ -22,10 +22,16 @@
 		//xPosition - Horizontal position of the element
 		//inertia - speed to move relative to vertical scroll. Example: 0.1 is one tenth the speed of scrolling, 2 is twice the speed of scrolling
 		//outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport
-		$('#content-pic-1').parallax("50%", 0.7);
-		$('#content-pic-2').parallax("50%", 0.7);
-		$('#content-pic-3').parallax("50%", 0.7);
+
+		applyParallax("50%",0.7);
+		
 	});
+
+	function applyParallax(hor, ratio){
+		$('#content-pic-1').parallax(hor, ratio);
+		$('#content-pic-2').parallax(hor, ratio);
+		$('#content-pic-3').parallax(hor, ratio);
+	}
 
 		// handle links with @href started with '#' only
 	$(document).on('click', 'a[href^="#"]', function(e) {

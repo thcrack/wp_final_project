@@ -32,6 +32,26 @@ $('#view-all-works').click(function(){
 	currentPage = 1;
 });
 
+$(document).on('click', 'a[href^="#"]', function(e) {
+    // target element id
+    var id = $(this).attr('href');
+
+    // target element
+    var $id = $(id);
+    if ($id.length === 0) {
+        return;
+    }
+
+    // prevent standard hash navigation (avoid blinking in IE)
+    e.preventDefault();
+
+    // top position relative to the document
+    var pos = $(id).offset().top;
+
+    // animated top scrolling
+    $('body, html').animate({scrollTop: pos});
+});
+
 function buildFilter(){
 
 	//regions
@@ -175,22 +195,20 @@ function getNewPage(pageNum){
 function loadDataFromArray(page){
 
 	console.log(itemCacheArray);
+	$('#designer-view').empty();
 	for(i = ITEMS_PER_PAGE*(page-1); i < ITEMS_PER_PAGE*page; i++){
 		if(i >= itemCacheArray.length) break;
 		var sItem = itemCacheArray[i];
 	    createDOM(sItem);
 	}
-
 	buildPagination();
 }
 
 function createDOM(entry){
 
-	$('#designer-view').empty();
+	$('#designer-view').append('<div class="designer-view-block" id="' + entry.itemID + '"></div>');
 
 	imgRoot.child("items/"+ entry.userUID + "/" + entry.itemID + "/itemPic.jpg").getDownloadURL().then(function(picUrl){
-
-        $('#designer-view').append('<div class="designer-view-block" id="' + entry.itemID + '"></div>');
 
         $('#' + entry.itemID).click(function(){
             $('#work-view-modal').empty();
